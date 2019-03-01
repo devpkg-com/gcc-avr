@@ -1,0 +1,61 @@
+#!/usr/bin/make -f
+
+VERSION = 8.2.0
+PACKAGE_NAME = gcc-avr-$(VERSION)
+TARBALL_NAME = gcc-$(VERSION).tar.xz
+SOURCE_URL = https://mirrors.kernel.org/gnu/gcc/gcc-$(VERSION)/$(TARBALL_NAME)
+TOP_DIR=$(shell pwd)
+BUILD_DIR=$(TOP_DIR)/build
+SOURCE_DIR=$(TOP_DIR)/src
+INSTALL_DIR=$(TOP_DIR)/debian/$(PACKAGE_NAME)
+export DEB_BUILD_MAINT_OPTIONS=hardening=-format
+
+%:
+	dh $@ -D$(SOURCE_DIR) -B$(BUILD_DIR) --parallel
+
+recreate_dirs:
+	rm -fr $(BUILD_DIR)
+	mkdir -p $(BUILD_DIR)
+	mkdir -p $(SOURCE_DIR)
+
+override_dh_auto_clean: recreate_dirs
+	wget -N $(SOURCE_URL)
+	tar --strip-components=1 -xf $(TARBALL_NAME) -C $(SOURCE_DIR)
+
+# This must be overriden since debhelper runs make -n (dry run)
+# which is not so dry. Resulting in:
+# /usr/bin/install: cannot stat 'include-fixed/limits.h': No such file or directory
+override_dh_auto_install:
+	$(MAKE) install-strip -C$(BUILD_DIR) DESTDIR=$(INSTALL_DIR)
+
+override_dh_auto_test:
+	@echo "No tests available."
+
+override_dh_strip:
+	find $(INSTALL_DIR)/usr/lib/  -type f -name "*.a" -exec avr-strip --strip-debug '{}' \;
+	rm -f $(INSTALL_DIR)/usr/lib/libcc1.*
+
+override_dh_auto_configure:
+	dh_auto_configure --							\
+	--enable-languages=c,c++						\
+	--prefix=/usr/lib								\
+	--infodir=/usr/share/info						\
+	--mandir=/usr/share/man							\
+	--bindir=/usr/bin								\
+	--libexecdir=/usr/lib							\
+	--libdir=/usr/lib								\
+	--target=avr									\
+	--program-suffix=-$(VERSION)					\
+	--program-prefix=avr-							\
+	--disable-nls									\
+	--disable-libssp								\
+	--disable-shared								\
+	--disable-threads								\
+	--disable-libgomp								\
+	--with-as=/usr/bin/avr-as 						\
+	--with-ld=/usr/bin/avr-ld 						\
+	--with-gnu-as 									\
+	--with-gnu-ld 									\
+	--with-system-zlib								\
+	--with-isl										\
+	--with-dwarf2

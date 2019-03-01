@@ -1,0 +1,5 @@
+.debhelper
+*.deb
+*.tar
+*.tar.gz
+*.tar.xz

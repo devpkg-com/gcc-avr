@@ -1,0 +1,5 @@
+gcc-avr-8.2.0 (1) stretch; urgency=medium
+
+  * Initial release.
+
+ -- admin  <admin@devpkg.com>  Mon, 25 Feb 2019 20:17:43 +0000
