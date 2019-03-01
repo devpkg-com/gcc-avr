@@ -4,6 +4,9 @@ defaults: &defaults
   steps:
    - checkout
    - run:
+      name: Prepare changelog
+      command: cp -a debian/changelog.$VERSION debian/changelog
+   - run:
       name: Build package
       command: >
         dpkg-buildpackage
