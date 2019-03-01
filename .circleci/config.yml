@@ -13,10 +13,13 @@ defaults: &defaults
         --compression=xz
         --compression-level=9
    - run:
-       name: Find
-       command: find /root -name "*.deb"
+       name: Create artifact dir
+       command: mkdir artifacts
+   - run:
+       name: Copy deb
+       command: mv ../*.deb artifacts/
    - store_artifacts:
-       path: ../*.deb
+       path: artifacts
 
 version: 2
 jobs:
