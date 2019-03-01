@@ -30,9 +30,6 @@ override_dh_auto_install:
 override_dh_auto_test:
 	@echo "No tests available."
 
-override_dh_builddeb:
-	dh_builddeb --destdir=out --
-
 override_dh_strip:
 	find $(INSTALL_DIR)/usr/lib/  -type f -name "*.a" -exec avr-strip --strip-debug '{}' \;
 	rm -f $(INSTALL_DIR)/usr/lib/libcc1.*

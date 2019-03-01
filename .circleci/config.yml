@@ -13,7 +13,7 @@ defaults: &defaults
         --compression=xz
         --compression-level=9
    - store_artifacts:
-      path: out/*.deb
+      path: ../*.deb
 
 version: 2
 jobs:
