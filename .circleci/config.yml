@@ -12,6 +12,9 @@ defaults: &defaults
         -jauto
         --compression=xz
         --compression-level=9
+   - run:
+     name: Find
+     command: find /root -name "*.deb"
    - store_artifacts:
       path: ../*.deb
 
