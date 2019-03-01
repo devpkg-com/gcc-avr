@@ -13,10 +13,10 @@ defaults: &defaults
         --compression=xz
         --compression-level=9
    - run:
-     name: Find
-     command: find /root -name "*.deb"
+       name: Find
+       command: find /root -name "*.deb"
    - store_artifacts:
-      path: ../*.deb
+       path: ../*.deb
 
 version: 2
 jobs:
