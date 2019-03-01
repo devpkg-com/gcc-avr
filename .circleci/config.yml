@@ -1,0 +1,34 @@
+defaults: &defaults
+  docker:
+   - image: lukaszkostka/debian_gcc:stretch
+  steps:
+   - checkout
+   - run:
+      name: Build package
+      command: >
+        dpkg-buildpackage
+        -B
+        --no-sign
+        -jauto
+        --compression=xz
+        --compression-level=9
+   - store_artifacts:
+      path: out/*.deb
+
+version: 2
+jobs:
+  build_8_2_0:
+    environment:
+      VERSION: 8.2.0
+    <<: *defaults
+  build_8_3_0:
+    environment:
+      VERSION: 8.3.0
+    <<: *defaults
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build_8_2_0
+      - build_8_3_0
