@@ -7,6 +7,9 @@ defaults: &defaults
       name: Prepare changelog
       command: cp -a debian/changelog.$VERSION debian/changelog
    - run:
+      name: Prepare control
+      command: ./gen_control.sh > debian/control
+   - run:
       name: Build package
       command: >
         dpkg-buildpackage

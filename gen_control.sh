@@ -1,4 +1,7 @@
-Source: gcc-avr-8.2.0
+#!/bin/sh
+
+cat  << EOF
+Source: gcc-avr-$VERSION
 Section: devel
 Priority: extra
 Maintainer: admin <admin@devpkg.com>
@@ -12,9 +15,10 @@ Build-Depends:
 Standards-Version: 3.9.6
 Homepage: http://gcc.gnu.org/
 
-Package: gcc-avr-8.2.0
+Package: gcc-avr-$VERSION
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends}, binutils-avr
+Depends: \${misc:Depends}, \${shlibs:Depends}, binutils-avr
 Recommends: avr-libc
 Provides: c-compiler-avr
 Description: GCC cross compiler for AVR micro controllers
+EOF

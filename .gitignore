@@ -1,4 +1,5 @@
 debian/changelog
+debian/control
 .debhelper
 *.deb
 *.tar
