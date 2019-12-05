@@ -14,11 +14,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Link control file
-        run: ln -s debian/control.${VERSION} debian/control
-
-      - name: Link changelog file
-        run: ln -s debian/changelog.${VERSION} debian/changelog
+      - name: Create requirements
+        run: make requires
 
       - name: Build package
         run: >
