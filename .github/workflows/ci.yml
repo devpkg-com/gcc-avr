@@ -8,8 +8,13 @@ jobs:
     container:
       image: lukaszkostka/debian_gcc:stretch
       env:
-        VERSION: 8.3.0
+        VERSION: ${{ matrix.version }}
         DH_VERBOSE: 0
+    strategy:
+      matrix:
+        version:
+          - 8.2.0
+          - 8.3.0
     steps:
       - name: Checkout
         uses: actions/checkout@v1
