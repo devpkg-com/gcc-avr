@@ -19,11 +19,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - run: ls -lR $GITHUB_WORKSPACE
+
       - name: Restore cache
         uses: actions/cache@v1
         with:
-          path: gcc-*.tar.xz
-          key: gcc-source-${{ hashFiles('debian/rules') }}
+          path: $GITHUB_WORKSPACE/gcc-*.tar.xz
+          key: gcc-source-${{ matrix.version }}
 
       - name: Create requirements
         run: make requires
