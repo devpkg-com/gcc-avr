@@ -18,7 +18,7 @@ recreate_dirs:
 	mkdir -p $(SOURCE_DIR)
 
 override_dh_auto_clean: recreate_dirs
-	wget -N $(SOURCE_URL)
+	wget -q -N $(SOURCE_URL)
 	tar --strip-components=1 -xf $(TARBALL_NAME) -C $(SOURCE_DIR)
 
 # This must be overriden since debhelper runs make -n (dry run)
