@@ -29,10 +29,4 @@ jobs:
         run: make requires
 
       - name: Build package
-        run: >
-          dpkg-buildpackage
-          -B
-          --no-sign
-          -jauto
-          --compression=xz
-          --compression-level=9
+        run: make deb
