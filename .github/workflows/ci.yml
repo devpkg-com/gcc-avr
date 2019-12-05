@@ -1,0 +1,30 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: lukaszkostka/debian_gcc:stretch
+      env:
+        VERSION: 8.3.0
+        DH_VERBOSE: 0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Link control file
+        run: ln -s debian/control.${VERSION} debian/control
+
+      - name: Link changelog file
+        run: ln -s debian/changelog.${VERSION} debian/changelog
+
+      - name: Build package
+        run: >
+          dpkg-buildpackage
+          -B
+          --no-sign
+          -jauto
+          --compression=xz
+          --compression-level=9
