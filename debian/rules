@@ -34,6 +34,9 @@ override_dh_strip:
 	find $(INSTALL_DIR)/usr/lib/  -type f -name "*.a" -exec avr-strip --strip-debug '{}' \;
 	rm -f $(INSTALL_DIR)/usr/lib/libcc1.*
 
+override_dh_builddeb:
+	dh_builddeb --destdir=$(TOP_DIR) -- -z9 -Zxz -Sextreme
+
 override_dh_auto_configure:
 	dh_auto_configure --							\
 	--enable-languages=c,c++						\
