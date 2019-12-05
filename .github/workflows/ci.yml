@@ -19,6 +19,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: Restore cache
+        uses: actions/cache@v1
+        with:
+          path: gcc-*.tar.xz
+          key: gcc-source-${{ hashFiles('debian/rules') }}
+
       - name: Create requirements
         run: make requires
 
