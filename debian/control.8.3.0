@@ -1,0 +1,20 @@
+Source: gcc-avr-8.3.0
+Section: devel
+Priority: extra
+Maintainer: admin <admin@devpkg.com>
+Build-Depends:
+ binutils-avr,
+ libgmp-dev,
+ libmpfr-dev,
+ libmpc-dev,
+ zlib1g-dev,
+ libisl-dev
+Standards-Version: 3.9.6
+Homepage: http://gcc.gnu.org/
+
+Package: gcc-avr-8.3.0
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}, binutils-avr
+Recommends: avr-libc
+Provides: c-compiler-avr
+Description: GCC cross compiler for AVR micro controllers
