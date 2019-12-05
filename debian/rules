@@ -17,7 +17,15 @@ recreate_dirs:
 	mkdir -p $(BUILD_DIR)
 	mkdir -p $(SOURCE_DIR)
 
-override_dh_auto_clean: recreate_dirs
+changelog:
+	cd debian; \
+	ln -fs changelog.${VERSION} changelog;
+
+control:
+	cd debian; \
+	ln -fs control.${VERSION} changelog;
+
+override_dh_auto_clean: recreate_dirs control changelog
 	wget -N $(SOURCE_URL)
 	tar --strip-components=1 -xf $(TARBALL_NAME) -C $(SOURCE_DIR)
 
