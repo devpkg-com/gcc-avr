@@ -22,7 +22,7 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v1
         with:
-          path: $GITHUB_WORKSPACE/gcc-*.tar.xz
+          path: gcc-*.tar.xz
           key: gcc-source-${{ matrix.version }}
 
       - name: Create requirements
