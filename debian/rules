@@ -1,25 +1,17 @@
 #!/usr/bin/make -f
 
 PACKAGE_NAME = gcc-avr-$(VERSION)
-TARBALL_NAME = gcc-$(VERSION).tar.xz
-SOURCE_URL = https://mirrors.kernel.org/gnu/gcc/gcc-$(VERSION)/$(TARBALL_NAME)
 TOP_DIR=$(shell pwd)
 BUILD_DIR=$(TOP_DIR)/build
-SOURCE_DIR=$(TOP_DIR)/src
 INSTALL_DIR=$(TOP_DIR)/debian/$(PACKAGE_NAME)
 export DEB_BUILD_MAINT_OPTIONS=hardening=-format
 
 %:
 	dh $@ -D$(SOURCE_DIR) -B$(BUILD_DIR) --parallel
 
-recreate_dirs:
+override_dh_auto_clean:
 	rm -fr $(BUILD_DIR)
 	mkdir -p $(BUILD_DIR)
-	mkdir -p $(SOURCE_DIR)
-
-override_dh_auto_clean: recreate_dirs
-	wget -q -N $(SOURCE_URL)
-	tar --strip-components=1 -xf $(TARBALL_NAME) -C $(SOURCE_DIR)
 
 # This must be overriden since debhelper runs make -n (dry run)
 # which is not so dry. Resulting in:
