@@ -22,7 +22,7 @@ jobs:
       - name: Restore cache
         uses: actions/cache@v1
         with:
-          path: gcc-*.tar.xz
+          path: gcc-${{ matrix.version }}.tar.xz
           key: gcc-source-${{ matrix.version }}
 
       - name: Create requirements
