@@ -30,4 +30,8 @@ deb: requires $(SOURCE_DIR)
 		--buildinfo-option="-u$(CURRENT_DIR)" 	\
 		--changes-option="-u$(CURRENT_DIR)" 		\
 
+artifacts:
+	mkdir -p artifacts
+	mv *.deb artifacts
+
 PHONY: requires clean deb

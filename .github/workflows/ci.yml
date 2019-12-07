@@ -30,3 +30,13 @@ jobs:
 
       - name: Build package
         run: make deb
+
+      - name: Move artifacts
+        run: make artifacts
+        if: success()
+
+      - uses: actions/upload-artifact@v1
+        with:
+          name: gcc-avr.deb
+          path: artifacts
+        if: success()
