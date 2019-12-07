@@ -38,6 +38,6 @@ jobs:
 
       - uses: actions/upload-artifact@v1
         with:
-          name: gcc-avr.deb
+          name: gcc-avr-${{ matrix.distro }}
           path: artifacts
         if: success()
