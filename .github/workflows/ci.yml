@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: lukaszkostka/debian_gcc:stretch
+      image: lukaszkostka/debian_gcc:${{ matrix.distro }}
       env:
         VERSION: ${{ matrix.version }}
         DH_VERBOSE: 0
@@ -15,6 +15,9 @@ jobs:
         version:
           - 8.2.0
           - 8.3.0
+        distro:
+          - stretch
+          - buster
     steps:
       - name: Checkout
         uses: actions/checkout@v1
