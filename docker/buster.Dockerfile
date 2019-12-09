@@ -23,3 +23,4 @@ RUN apt-get install -y libisl-dev
 RUN apt-get install -y debhelper
 RUN apt-get install -y wget
 RUN apt-get install -y ca-certificates
+RUN apt-get install -y avr-libc
