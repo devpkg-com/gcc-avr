@@ -1,4 +1,4 @@
-Source: gcc-avr-8.2.0
+Source: gcc-avr
 Section: devel
 Priority: extra
 Maintainer: admin <admin@devpkg.com>
@@ -12,7 +12,7 @@ Build-Depends:
 Standards-Version: 3.9.6
 Homepage: http://gcc.gnu.org/
 
-Package: gcc-avr-8.2.0
+Package: gcc-avr
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}, binutils-avr
 Recommends: avr-libc
