@@ -1,4 +1,4 @@
-gcc-avr-8.2.0 (1) stretch; urgency=medium
+gcc-avr (1:8.2.0-1) stretch; urgency=medium
 
   * Initial release.
 
