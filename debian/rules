@@ -39,9 +39,11 @@ override_dh_auto_configure:
 	--libexecdir=/usr/lib							\
 	--libdir=/usr/lib								\
 	--target=avr									\
-	--disable-nls									\
+	--enable-shared								\
+	--enable-long-long 						\
+	--enable-nls									\
+	--without-included-gettext	\
 	--disable-libssp								\
-	--disable-shared								\
 	--disable-threads								\
 	--disable-libgomp								\
 	--with-as=/usr/bin/avr-as 						\
