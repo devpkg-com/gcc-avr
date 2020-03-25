@@ -46,8 +46,6 @@ override_dh_auto_configure:
 	--disable-libgomp								\
 	--with-as=/usr/bin/avr-as 						\
 	--with-ld=/usr/bin/avr-ld 						\
-	--with-gnu-as 									\
-	--with-gnu-ld 									\
 	--with-system-zlib								\
 	--with-isl										\
 	--with-dwarf2
