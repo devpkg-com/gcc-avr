@@ -39,8 +39,6 @@ override_dh_auto_configure:
 	--libexecdir=/usr/lib							\
 	--libdir=/usr/lib								\
 	--target=avr									\
-	--program-suffix=-$(VERSION)					\
-	--program-prefix=avr-							\
 	--disable-nls									\
 	--disable-libssp								\
 	--disable-shared								\
