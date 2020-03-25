@@ -1,3 +1,14 @@
+gcc-avr (1:9.1.0-2) stretch; urgency=medium
+
+  * Add configure options
+    --enable-shared
+    --enable-long-long
+    --enable-nls
+    --without-included-gettext
+
+
+ -- admin  <admin@devpkg.com>  Wed, 25 Mar 2020 20:17:43 +0000
+
 gcc-avr (1:9.1.0-1) stretch; urgency=medium
 
   * Initial release.
