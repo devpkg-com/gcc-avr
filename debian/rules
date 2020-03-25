@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 
-PACKAGE_NAME = gcc-avr-$(VERSION)
+PACKAGE_NAME = gcc-avr
 TOP_DIR=$(shell pwd)
 BUILD_DIR=$(TOP_DIR)/build
 INSTALL_DIR=$(TOP_DIR)/debian/$(PACKAGE_NAME)
