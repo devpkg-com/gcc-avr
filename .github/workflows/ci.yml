@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: lukaszkostka/debian_gcc:${{ matrix.distro }}
+      image: lukaszkostka/${{ matrix.distro.name }}_gcc:${{ matrix.distro.release }}
       env:
         VERSION: ${{ matrix.version }}
         DH_VERBOSE: 0
@@ -25,7 +25,10 @@ jobs:
           - 10.1.0
           - 10.2.0
         distro:
-          - stretch
+          - name: ubuntu
+            release: focal
+          - name: debian
+            release: buster
     steps:
       - name: Checkout
         uses: actions/checkout@v1
@@ -45,6 +48,6 @@ jobs:
 
       - uses: actions/upload-artifact@v1
         with:
-          name: gcc-avr-${{ matrix.distro }}
+          name: gcc-avr-${{ matrix.distro.name }}-${{ matrix.distro.release }}
           path: artifacts
         if: success()

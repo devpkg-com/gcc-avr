@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM ubuntu:focal
 
 ENV DEBIAN_FRONTEND noninteractive
 
