@@ -12,7 +12,8 @@ $(SOURCE_DIR): $(TARBALL_NAME)
 	tar --strip-components=1 -xf $(TARBALL_NAME) -C $(SOURCE_DIR)
 
 requires:
-	$(CURRENT_DIR)/deb_files.py $(VERSION) $(DISTRO_NAME) > debian/changelog
+	echo $(CURRENT_DIR); \
+	$(CURRENT_DIR)/deb_files.py $(VERSION) $(DISTRO_NAME) > debian/changelog; \
 
 clean:
 	rm debian/changelog
