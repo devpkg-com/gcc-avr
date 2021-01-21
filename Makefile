@@ -12,8 +12,7 @@ $(SOURCE_DIR): $(TARBALL_NAME)
 	tar --strip-components=1 -xf $(TARBALL_NAME) -C $(SOURCE_DIR)
 
 requires:
-	ls -la $(CURRENT_DIR); \
-	$(CURRENT_DIR)/deb_files.py $(VERSION) $(DISTRO_NAME) > debian/changelog; \
+	python3 deb_files.py $(VERSION) $(DISTRO_RELEASE) > debian/changelog
 
 clean:
 	rm debian/changelog
