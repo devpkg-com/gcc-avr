@@ -12,12 +12,9 @@ $(SOURCE_DIR): $(TARBALL_NAME)
 	tar --strip-components=1 -xf $(TARBALL_NAME) -C $(SOURCE_DIR)
 
 requires:
-	cd debian; \
-	ln -fs control.$(VERSION) control; \
-	ln -fs changelog.$(VERSION) changelog; \
+	./deb_files.py $(VERSION) $(DISTRO_NAME) > debian/changelog
 
 clean:
-	rm debian/control
 	rm debian/changelog
 
 deb: requires $(SOURCE_DIR)

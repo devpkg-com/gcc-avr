@@ -1,5 +1,0 @@
-gcc-avr (1:10.1.0-1) stretch; urgency=medium
-
-  * Initial release.
-
- -- admin  <admin@devpkg.com>  Sun, 27 Dec 2020 10:17:43 +0000
