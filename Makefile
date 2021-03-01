@@ -25,8 +25,6 @@ deb: requires $(SOURCE_DIR)
 		-B 														\
 		--no-sign  										\
 		-jauto 												\
-		--compression=xz 							\
-		--compression-level=9 				\
 		--buildinfo-option="-u$(CURRENT_DIR)" 	\
 		--changes-option="-u$(CURRENT_DIR)" 		\
 
